@@ -1,0 +1,13 @@
+let localSigninFail= 
+SecurityEvent 
+| where EventID == 4771;
+//| project TargetUserName;
+localSigninFail
+
+let AzureSigning=
+SigninLogs
+| where AppDisplayName == "Microsoft Cloud App Security" or AppDisplayName == "Azure Portal"
+| where ResultType == "0" 
+| project UserPrincipalName
+| extend split(UserPrincipalName,"@").[0];
+AzureSigning | join(localSigninFail) on $left.UserPrincipalName contains $right.TargetUserName
