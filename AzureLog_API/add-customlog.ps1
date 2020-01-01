@@ -15,6 +15,7 @@ $guid1 = New-Guid
 $guid2 = New-Guid
 $random1 = Get-Random
 $random2 = Get-Random
+
 # Create two records with the same set of properties to create
 $json = @"
 [{  "StringValue": "Test1",
