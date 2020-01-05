@@ -1,0 +1,5 @@
+OfficeActivity
+| where TimeGenerated > ago(2d)
+| union withsource=SigninLogs kind=outer
+    (SigninLogs | where TimeGenerated > ago(2d))
+| project UserId

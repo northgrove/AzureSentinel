@@ -1,0 +1,9 @@
+let signin = SigninLogs
+| where Identity == "Egon Olsen"
+| project AppDisplayName, Identity    ;
+IntuneDeviceComplianceOrg
+| project DeviceName, ComplianceState, UserName  
+| join (
+   signin
+) on $left.UserName == $right.Identity 
+| project AppDisplayName, DeviceName, ComplianceState

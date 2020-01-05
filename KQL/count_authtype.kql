@@ -1,0 +1,12 @@
+// Group and count authentication types
+SecurityEvent
+| where EventID == "4624"
+| summarize NumerOfAuthentications=count(EventID) by AuthenticationPackageName;
+
+
+
+// Group and Count NTLM authentications types + show info about account and computer
+SecurityEvent
+| where EventID == "4624"
+| where AuthenticationPackageName == "NTLM" 
+| summarize NumerOfAuthentications=count(EventID) by LmPackageName, Account, Computer
