@@ -1,3 +1,5 @@
+# Source: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collector-api#sample-requests
+
 # Replace with your Workspace ID
 $CustomerId = "d113b58f-342b-471d-ad0e-e41c4fc228b8"  
 
